@@ -1,0 +1,14 @@
+@import '../../style/variables.scss';
+.wrapper {
+	max-width: 1000px;
+	margin: 50px auto;
+	//background-color: $btn-disable-color;
+}
+
+.header {
+}
+
+.main {
+	display: flex;
+	justify-content: space-between;
+}

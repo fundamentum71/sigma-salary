@@ -1,0 +1,17 @@
+@import '../../style/variables.scss';
+.result {
+	border: 1px solid $placeholderText-color;
+	background-color: $mainBG-color;
+	border-radius: 4px;
+	font-size: 1.2rem;
+	width: 550px;
+	height: 200px;
+	padding: 20px;
+	h2 {
+		text-align: center;
+		margin-bottom: 20px;
+	}
+	span {
+		font-weight: 800;
+	}
+}
