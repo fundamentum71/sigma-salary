@@ -1,0 +1,53 @@
+@import '../../style/variables.scss';
+.addForm {
+	font-size: 1.2rem;
+	max-width: 400px;
+	min-height: 400px;
+	margin: 0 auto;
+	border: 1px solid $placeholderText-color;
+	border-radius: 10px;
+	padding: 40px;
+
+	background-color: $mainBG-color;
+
+	&__label {
+		margin: 10px;
+	}
+	&__input {
+		width: 100px;
+		height: 40px;
+		padding: 0 15px;
+		margin: 10px;
+		font-size: 1.15rem;
+		box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+		border: none;
+		border-radius: 4px;
+	}
+
+	&__btn {
+		background-color: $btn-enable-color;
+		color: #ffffff;
+		border-radius: 10px;
+		width: 284px;
+		height: 36px;
+		font-family: 'inter';
+		font-size: 0.75rem;
+		display: block;
+		margin: 0 auto;
+		margin-top: 54px;
+
+		cursor: pointer;
+		border: none;
+		&:active {
+			transform: scale(1.05);
+		}
+		&:disabled {
+			background-color: $btn-disable-color;
+			color: $btn-disable-text-color;
+			cursor: default;
+			&:active {
+				transform: none;
+			}
+		}
+	}
+}
