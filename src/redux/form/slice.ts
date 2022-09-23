@@ -17,17 +17,16 @@ const formSlice = createSlice({
 				? action.payload.quarterlyPercent
 				: '';
 			state.newYearPercent = action.payload.newYearPercent ? action.payload.newYearPercent : '';
-			console.log(
-				'Из редакса',
-				state.salary,
-				state.weekends,
-				state.quarterlyPercent,
-				state.newYearPercent,
-			);
+		},
+		reset(state) {
+			state.salary = '';
+			state.weekends = '';
+			state.quarterlyPercent = '';
+			state.newYearPercent = '';
 		},
 	},
 });
 
-export const { updState } = formSlice.actions;
+export const { updState, reset } = formSlice.actions;
 
 export default formSlice.reducer;
