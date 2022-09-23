@@ -1,5 +1,6 @@
 @import '../../style/variables.scss';
 .addForm {
+	//position: relative;
 	font-size: 1.2rem;
 	min-height: 400px;
 	margin-bottom: 20px;
@@ -55,8 +56,14 @@
 		font-family: 'inter';
 		font-size: 0.75rem;
 		display: block;
-		margin: 0 auto;
 		margin-top: 54px;
+		margin: 0 auto;
+		margin-top: 100px;
+
+		//position: absolute;
+		//bottom: 40px;
+		//left: 50%;
+		//transform: translateX(-50%);
 		@media (max-width: 885px) {
 			width: 70%;
 		}
