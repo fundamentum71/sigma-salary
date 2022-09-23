@@ -13,4 +13,9 @@
 	display: flex;
 	justify-content: space-between;
 	flex-wrap: wrap;
+
+	@media (max-width: 885px) {
+		flex-direction: column;
+		align-items: center;
+	}
 }
