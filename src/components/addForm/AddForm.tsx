@@ -57,7 +57,6 @@ const AddForm: React.FC = () => {
 			<label htmlFor="salary" className={styles.addForm__label}>
 				Введите ваш оклад:
 			</label>
-			<br />
 			<input
 				id="salary"
 				name="salary"
@@ -134,6 +133,7 @@ const AddForm: React.FC = () => {
 				checked={newYear}
 				onChange={() => setNewYear(!newYear)}
 			/>
+			<br />
 			{newYear && (
 				<>
 					<label htmlFor="newYearPercent" className={styles.addForm__label}>

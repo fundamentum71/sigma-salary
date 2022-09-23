@@ -13,10 +13,22 @@
 		left: 40px;
 		font-family: 'Play', sans-serif;
 		font-weight: 700;
+		@media (max-width: 378px) {
+			font-size: 1.5rem;
+		}
 	}
 }
 
 .image {
+	@media (max-width: 500px) {
+		max-width: 300px;
+		margin: 0 auto;
+		img {
+			display: block;
+			max-width: 230px;
+			margin: 10px auto;
+		}
+	}
 }
 
 .banner {
