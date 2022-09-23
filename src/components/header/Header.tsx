@@ -8,6 +8,8 @@ const Header: React.FC = () => {
 			<div className={styles.image}>
 				<img src={logo} alt="Лого" />
 			</div>
+			<div className={styles.banner}></div>
+			<h1>Калькулятор расчета зарплаты</h1>
 		</div>
 	);
 };

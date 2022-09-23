@@ -1,7 +1,11 @@
 import React from 'react';
+import { updState } from '../../redux/form/slice';
+import { useAppDispatch } from '../../redux/hook';
 import styles from './addForm.module.scss';
 
 const AddForm: React.FC = () => {
+	const dipatch = useAppDispatch();
+
 	const [salary, setSalary] = React.useState('');
 	const [weekends, setWeekends] = React.useState('');
 	const [quarterlyPercent, setQuarterlyPercent] = React.useState('');
@@ -9,9 +13,15 @@ const AddForm: React.FC = () => {
 	const [quarterly, setQuarterly] = React.useState(false);
 	const [newYear, setNewYear] = React.useState(false);
 
-	console.log(salary, weekends, quarterlyPercent, newYearPercent);
-
-	const handleAction = () => {};
+	const handleAction = () => {
+		if (salary.trim().length && weekends.trim().length) {
+			dipatch(updState({ salary, weekends, quarterlyPercent, newYearPercent }));
+			setSalary('');
+			setWeekends('');
+			setQuarterlyPercent('');
+			setNewYearPercent('');
+		}
+	};
 
 	const onValueChange = (e: any) => {
 		switch (e.target.name) {
@@ -74,7 +84,7 @@ const AddForm: React.FC = () => {
 				type="checkbox"
 				checked={quarterly}
 				onChange={() => setQuarterly(!quarterly)}
-			/>{' '}
+			/>
 			<br />
 			{quarterly && (
 				<>
@@ -90,6 +100,7 @@ const AddForm: React.FC = () => {
 						value={quarterlyPercent}
 						onChange={(e) => onValueChange(e)}
 					/>
+					<span>%</span> <br />
 				</>
 			)}
 			<label htmlFor="newYear" className={styles.addForm__label}>
@@ -116,9 +127,12 @@ const AddForm: React.FC = () => {
 						value={newYearPercent}
 						onChange={(e) => onValueChange(e)}
 					/>
+					<span>%</span> <br />
 				</>
 			)}
-			<button className={styles.addForm__btn}>Посчитать</button>
+			<button className={styles.addForm__btn} onClick={() => handleAction()}>
+				Посчитать
+			</button>
 		</div>
 	);
 };

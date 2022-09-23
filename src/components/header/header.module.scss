@@ -1,9 +1,31 @@
 @import '../../style/variables.scss';
+
 .wrapper {
 	//background-color: $btn-enable-color;
 	height: 70px;
-	margin-bottom: 30px;
+	margin-bottom: 210px;
+	position: relative;
+	h1 {
+		font-size: 2.2rem;
+		color: #fff;
+		position: absolute;
+		top: 100px;
+		left: 40px;
+		font-family: 'Play', sans-serif;
+		font-weight: 700;
+	}
 }
 
 .image {
+}
+
+.banner {
+	background-color: $error-validated-color;
+	width: 100%;
+	height: 175px;
+	background: url('../../resources/img/banner.jpg') no-repeat center;
+	filter: brightness(0.5);
+	background-size: cover;
+
+	padding: 30px;
 }

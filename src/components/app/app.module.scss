@@ -1,7 +1,8 @@
 @import '../../style/variables.scss';
 .wrapper {
-	max-width: 1000px;
-	margin: 50px auto;
+	max-width: 1040px;
+	margin: 10px auto;
+	padding: 20px;
 	//background-color: $btn-disable-color;
 }
 
@@ -11,4 +12,5 @@
 .main {
 	display: flex;
 	justify-content: space-between;
+	flex-wrap: wrap;
 }
