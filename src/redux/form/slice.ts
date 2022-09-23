@@ -12,7 +12,7 @@ const formSlice = createSlice({
 	reducers: {
 		updState(state, action: PayloadAction<formItem>) {
 			state.salary = action.payload.salary;
-			state.weekends = action.payload.weekends;
+			state.weekends = action.payload.weekends ? action.payload.weekends : '';
 			state.quarterlyPercent = action.payload.quarterlyPercent
 				? action.payload.quarterlyPercent
 				: '';

@@ -10,16 +10,21 @@ const AddForm: React.FC = () => {
 	const [weekends, setWeekends] = React.useState('');
 	const [quarterlyPercent, setQuarterlyPercent] = React.useState('');
 	const [newYearPercent, setNewYearPercent] = React.useState('');
+
+	const [wentOutWeekend, setWentOutWeekend] = React.useState(false);
 	const [quarterly, setQuarterly] = React.useState(false);
 	const [newYear, setNewYear] = React.useState(false);
 
 	const handleAction = () => {
-		if (salary.trim().length && weekends.trim().length) {
+		if (salary.trim().length) {
 			dipatch(updState({ salary, weekends, quarterlyPercent, newYearPercent }));
 			setSalary('');
 			setWeekends('');
 			setQuarterlyPercent('');
 			setNewYearPercent('');
+			setWentOutWeekend(false);
+			setQuarterly(false);
+			setNewYear(false);
 		}
 	};
 
@@ -48,6 +53,7 @@ const AddForm: React.FC = () => {
 
 	return (
 		<div className={styles.addForm}>
+			<h2>Заполните форму</h2>
 			<label htmlFor="salary" className={styles.addForm__label}>
 				Введите ваш оклад:
 			</label>
@@ -62,19 +68,34 @@ const AddForm: React.FC = () => {
 				onChange={(e) => onValueChange(e)}
 			/>
 			<span>руб.</span> <br />
-			<label htmlFor="weekends" className={styles.addForm__label}>
-				Сколько выходных выходили:
+			<label htmlFor="wentOutWeekend" className={styles.addForm__label}>
+				Выходили на выходных?
 			</label>
 			<input
-				id="weekends"
-				name="weekends"
-				type="number"
-				placeholder="Вх.дни"
-				className={styles.addForm__input}
-				value={weekends}
-				onChange={(e) => onValueChange(e)}
+				id="wentOutWeekend"
+				name="wentOutWeekend"
+				type="checkbox"
+				checked={wentOutWeekend}
+				onChange={() => setWentOutWeekend(!wentOutWeekend)}
 			/>
-			<span>выходных</span> <br />
+			<br />
+			{wentOutWeekend && (
+				<>
+					<label htmlFor="weekends" className={styles.addForm__label}>
+						Сколько дней:
+					</label>
+					<input
+						id="weekends"
+						name="weekends"
+						type="number"
+						placeholder="Вх.дни"
+						className={styles.addForm__input}
+						value={weekends}
+						onChange={(e) => onValueChange(e)}
+					/>
+					<span>дней</span> <br />
+				</>
+			)}
 			<label htmlFor="quarterly" className={styles.addForm__label}>
 				Будет квартальная премия?
 			</label>

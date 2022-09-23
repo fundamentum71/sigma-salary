@@ -16,15 +16,23 @@ const ResultField: React.FC = () => {
 	let quarterlyPremium = 0;
 	let newYearBonus = 0;
 	let salaryForWekend = 0;
+	let averageAnnual = 0;
 
 	if (quarterlyPercent === '') {
 		quarterlyPercent = '0';
+	}
+
+	if (weekends === '') {
+		weekends = '0';
 	}
 
 	if (newYearPercent === '') {
 		newYearPercent = '0';
 	}
 
+	//за выходной день
+	salaryForWekend = 1248 * parseFloat(weekends);
+	//квартальная премия
 	quarterlyPremium =
 		parseFloat(salary) +
 		(parseFloat(salary) / 100) * parseFloat(quarterlyPercent) -
@@ -47,12 +55,38 @@ const ResultField: React.FC = () => {
 	prepaid = (parseFloat(salary) - (parseFloat(salary) / 100) * 13) / 2;
 	//зарплата
 	cleanSalary = fullSalary - prepaid;
-	//квартальная премия
+	//среднегодавая
+	//месяц без премий
+	const averageAnnualStepOne =
+		parseFloat(salary) +
+		(parseFloat(salary) / 100) * monthlyBonus -
+		((parseFloat(salary) + (parseFloat(salary) / 100) * monthlyBonus) / 100) * 13;
+
+	//месяц с квартальной
+	const averageAnnualStepTwo =
+		parseFloat(salary) +
+		(parseFloat(salary) / 100) * monthlyBonus -
+		((parseFloat(salary) + (parseFloat(salary) / 100) * monthlyBonus) / 100) * 13 +
+		(parseFloat(salary) + (parseFloat(salary) / 100) * 40 - parseFloat(salary));
+
+	//месяц с квартальной и новогодней
+	const averageAnnualStepThree =
+		parseFloat(salary) +
+		(parseFloat(salary) / 100) * monthlyBonus -
+		((parseFloat(salary) + (parseFloat(salary) / 100) * monthlyBonus) / 100) * 13 +
+		(parseFloat(salary) + (parseFloat(salary) / 100) * 40 - parseFloat(salary)) +
+		(parseFloat(salary) + (parseFloat(salary) / 100) * 40 - parseFloat(salary));
+
+	averageAnnual = parseFloat(
+		((8 * averageAnnualStepOne + 3 * averageAnnualStepTwo + averageAnnualStepThree) / 12).toFixed(
+			2,
+		),
+	);
 
 	return (
 		<div className={styles.wrapper}>
 			<section className={styles.result}>
-				<h2>Заполните данные</h2>
+				<h2>Вычисления</h2>
 				<div className={styles.fullSallary}>
 					<span>Полная зп за месяц:</span> {fullSalary ? fullSalary : 0} руб.
 				</div>
@@ -63,15 +97,26 @@ const ResultField: React.FC = () => {
 					<span>Зарплата:</span> {cleanSalary ? cleanSalary : 0} руб.
 				</div>
 
-				<div className={styles.prepaid}>
-					<span>Квартальная премия:</span> {quarterlyPremium ? quarterlyPremium : 0} руб.
-				</div>
-				<div className={styles.prepaid}>
-					<span>Новогодняя премия:</span> {newYearBonus ? newYearBonus : 0} руб.
-				</div>
+				{quarterlyPremium > 0 && (
+					<div className={styles.prepaid}>
+						<span>Квартальная премия:</span> {quarterlyPremium ? quarterlyPremium : 0} руб.
+					</div>
+				)}
+				{newYearBonus > 0 && (
+					<div className={styles.prepaid}>
+						<span>Новогодняя премия:</span> {newYearBonus ? newYearBonus : 0} руб.
+					</div>
+				)}
+				{salaryForWekend > 0 && (
+					<div className={styles.prepaid}>
+						<span>За выходные дни:</span> {salaryForWekend ? salaryForWekend : 0} руб. ({weekends}{' '}
+						вых.)
+					</div>
+				)}
 
-				<div className={styles.prepaid}>
-					<span>Ср.годовая:</span> {newYearBonus ? newYearBonus : 0} руб.
+				<div className={styles.averageAnnual}>
+					<span>Среднегодовая:</span> {averageAnnual ? averageAnnual : 0} руб. (без учета выходных
+					дней)
 				</div>
 			</section>
 			<button className={styles.clear} onClick={() => dispatch(reset())}>
