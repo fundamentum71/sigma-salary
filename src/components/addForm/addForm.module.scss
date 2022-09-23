@@ -14,13 +14,10 @@
 		margin-right: 0px;
 	}
 
-	@media (max-width: 390px) {
-		padding: 10px;
-	}
-
-	@media (max-width: 378px) {
+	@media (max-width: 420px) {
 		font-size: 0.9rem;
 		min-height: 300px;
+		padding: 10px;
 	}
 
 	h2 {
@@ -40,7 +37,7 @@
 		box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
 		border: none;
 		border-radius: 4px;
-		@media (max-width: 378px) {
+		@media (max-width: 420px) {
 			font-size: 0.9rem;
 			padding: 0 10px;
 			width: 68px;
