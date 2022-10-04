@@ -10,6 +10,61 @@
 .header {
 }
 
+.nav {
+	display: flex;
+	justify-content: space-around;
+	margin-bottom: 30px;
+}
+
+.button {
+	background-color: rgba(73, 72, 94, 1);
+	color: #ffffff;
+	border-radius: 10px;
+	width: 284px;
+	height: 36px;
+	display: block;
+	transform: skewX(-20deg);
+	cursor: pointer;
+	border: none;
+	p {
+		font-family: 'inter';
+		font-size: 0.75rem;
+		transform: skewX(20deg);
+	}
+
+	&:hover {
+		background-color: rgba(73, 72, 94, 0.9);
+	}
+	&:active {
+		background-color: #222374;
+	}
+	&:disabled {
+		background-color: $btn-disable-color;
+		color: $btn-disable-text-color;
+		cursor: default;
+		&:active {
+			transform: none;
+		}
+	}
+}
+
+.button_active {
+	background-color: #222374;
+	color: #ffffff;
+	border-radius: 10px;
+	width: 284px;
+	height: 36px;
+	display: block;
+	transform: skewX(-20deg);
+	cursor: pointer;
+	border: none;
+	p {
+		font-family: 'inter';
+		font-size: 0.75rem;
+		transform: skewX(20deg);
+	}
+}
+
 .main {
 	display: flex;
 	justify-content: space-between;
