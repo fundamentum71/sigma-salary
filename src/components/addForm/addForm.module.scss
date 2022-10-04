@@ -9,7 +9,7 @@
 	border-radius: 10px;
 	padding: 20px 40px 40px 40px;
 	background-color: $mainBG-color;
-	@media (max-width: 885px) {
+	@media (max-width: 928px) {
 		width: 100%;
 		margin-right: 0px;
 	}
@@ -61,7 +61,7 @@
 		//bottom: 40px;
 		//left: 50%;
 		//transform: translateX(-50%);
-		@media (max-width: 885px) {
+		@media (max-width: 928px) {
 			width: 70%;
 		}
 

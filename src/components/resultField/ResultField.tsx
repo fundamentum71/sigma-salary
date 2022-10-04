@@ -31,7 +31,7 @@ const ResultField: React.FC = () => {
 	}
 
 	//за выходной день
-	salaryForWekend = 1248 * parseFloat(weekends);
+	salaryForWekend = 1722 * parseFloat(weekends);
 	//квартальная премия
 	quarterlyPremium =
 		parseFloat(salary) +

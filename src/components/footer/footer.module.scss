@@ -1,0 +1,18 @@
+@import '../../style/variables.scss';
+
+.wrapper {
+	margin-top: 30px;
+	height: 70px;
+	background: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: $btn-disable-text-color;
+}
+
+.items {
+	margin-right: 30px;
+	&:last-child {
+		margin-right: 0;
+	}
+}
