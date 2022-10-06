@@ -1,9 +1,9 @@
 import React from 'react';
 import { reset } from '../../redux/form/slice';
 import { useAppDispatch, useAppSelector } from '../../redux/hook';
-import styles from './resultField.module.scss';
+import styles from './monthField.module.scss';
 
-const ResultField: React.FC = () => {
+const MonthField: React.FC = () => {
 	const dispatch = useAppDispatch();
 	let { salary, weekends, quarterlyPercent, newYearPercent } = useAppSelector(
 		(state) => state.form,
@@ -89,7 +89,7 @@ const ResultField: React.FC = () => {
 	return (
 		<div className={styles.wrapper}>
 			<section className={styles.result}>
-				<h2>Вычисления</h2>
+				<h2>Месячные начисления</h2>
 				<div className={styles.fullSallary}>
 					<span>Полная зп за месяц:</span> {fullSalary ? fullSalary : 0} руб.
 				</div>
@@ -129,4 +129,4 @@ const ResultField: React.FC = () => {
 	);
 };
 
-export default ResultField;
+export default MonthField;

@@ -1,9 +1,12 @@
 import React from 'react';
 
 import AddForm from '../addForm/AddForm';
+import DaysField from '../daysField/DaysField';
 import Footer from '../footer/Footer';
 import Header from '../header/Header';
-import ResultField from '../resultField/ResultField';
+import MonthField from '../monthField/MonthField';
+import YearField from '../yearField/YearField';
+
 import styles from './app.module.scss';
 
 function App() {
@@ -55,13 +58,13 @@ function App() {
 export default App;
 
 const MonthBlock = () => {
-	return <ResultField />;
+	return <MonthField />;
 };
 
 const DayBlock = () => {
-	return <h1>результаты за день</h1>;
+	return <DaysField />;
 };
 
 const YearBlock = () => {
-	return <h1>результаты за год</h1>;
+	return <YearField />;
 };
