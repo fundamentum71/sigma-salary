@@ -3,8 +3,6 @@
 	max-width: 1040px;
 	margin: 10px auto 0px auto;
 	padding: 20px 20px 0 20px;
-
-	//background-color: $btn-disable-color;
 }
 
 .header {
@@ -12,31 +10,27 @@
 
 .nav {
 	display: flex;
-	justify-content: space-around;
+	justify-content: center;
 	margin-bottom: 30px;
 }
 
 .button {
-	background-color: rgba(73, 72, 94, 1);
-	color: #ffffff;
-	border-radius: 10px;
-	width: 284px;
-	height: 36px;
-	display: block;
-	transform: skewX(-20deg);
-	cursor: pointer;
+	background-color: white;
+	color: $label-color;
 	border: none;
+	width: 33.3%;
+	height: 60px;
+	display: block;
+	cursor: pointer;
+
 	p {
 		font-family: 'inter';
 		font-size: 0.75rem;
-		transform: skewX(20deg);
 	}
 
 	&:hover {
-		background-color: rgba(73, 72, 94, 0.9);
-	}
-	&:active {
-		background-color: #222374;
+		border-radius: 10px;
+		border: solid 0.4px rgba(73, 72, 94, 0.2);
 	}
 	&:disabled {
 		background-color: $btn-disable-color;
@@ -49,19 +43,17 @@
 }
 
 .button_active {
-	background-color: #222374;
+	background-color: #53834b;
 	color: #ffffff;
 	border-radius: 10px;
-	width: 284px;
-	height: 36px;
+	width: 33.3%;
+	height: 60px;
 	display: block;
-	transform: skewX(-20deg);
 	cursor: pointer;
 	border: none;
 	p {
 		font-family: 'inter';
 		font-size: 0.75rem;
-		transform: skewX(20deg);
 	}
 }
 
