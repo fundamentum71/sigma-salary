@@ -33,28 +33,31 @@ const ResultField: React.FC = () => {
 	//за выходной день
 	salaryForWekend = 1722 * parseFloat(weekends);
 	//квартальная премия
-	quarterlyPremium =
+	quarterlyPremium = Math.floor(
 		parseFloat(salary) +
-		(parseFloat(salary) / 100) * parseFloat(quarterlyPercent) -
-		parseFloat(salary);
+			(parseFloat(salary) / 100) * parseFloat(quarterlyPercent) -
+			parseFloat(salary),
+	);
 
 	//новогодняя премия
-	newYearBonus =
+	newYearBonus = Math.floor(
 		parseFloat(salary) +
-		(parseFloat(salary) / 100) * parseFloat(newYearPercent) -
-		parseFloat(salary);
+			(parseFloat(salary) / 100) * parseFloat(newYearPercent) -
+			parseFloat(salary),
+	);
 	//полная зп
-	fullSalary =
+	fullSalary = Math.floor(
 		parseFloat(salary) +
-		(parseFloat(salary) / 100) * monthlyBonus -
-		((parseFloat(salary) + (parseFloat(salary) / 100) * monthlyBonus) / 100) * 13 +
-		quarterlyPremium +
-		newYearBonus +
-		salaryForWekend;
+			(parseFloat(salary) / 100) * monthlyBonus -
+			((parseFloat(salary) + (parseFloat(salary) / 100) * monthlyBonus) / 100) * 13 +
+			quarterlyPremium +
+			newYearBonus +
+			salaryForWekend,
+	);
 	//аванс
-	prepaid = (parseFloat(salary) - (parseFloat(salary) / 100) * 13) / 2;
+	prepaid = Math.floor((parseFloat(salary) - (parseFloat(salary) / 100) * 13) / 2);
 	//зарплата
-	cleanSalary = fullSalary - prepaid;
+	cleanSalary = Math.floor(fullSalary - prepaid);
 	//среднегодавая
 	//месяц без премий
 	const averageAnnualStepOne =

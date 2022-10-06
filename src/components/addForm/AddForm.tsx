@@ -15,8 +15,25 @@ const AddForm: React.FC = () => {
 	const [quarterly, setQuarterly] = React.useState(false);
 	const [newYear, setNewYear] = React.useState(false);
 
+	const [salaryDirty, setSalaryDirty] = React.useState(false);
+	const [salaryError, setSalaryError] = React.useState('Поле является обязательным');
+	const [formValid, setFormValid] = React.useState(false);
+
+	//после выхода из фокуса выведет ошибку
+	const blurHandler = () => {
+		setSalaryDirty(true);
+	};
+
+	React.useEffect(() => {
+		if (salaryError) {
+			setFormValid(false);
+		} else {
+			setFormValid(true);
+		}
+	}, [salaryError]);
+
 	const handleAction = () => {
-		if (salary.trim().length) {
+		if (formValid) {
 			dipatch(updState({ salary, weekends, quarterlyPercent, newYearPercent }));
 			setSalary('');
 			setWeekends('');
@@ -25,6 +42,8 @@ const AddForm: React.FC = () => {
 			setWentOutWeekend(false);
 			setQuarterly(false);
 			setNewYear(false);
+			setSalaryError('Поле является обязательным');
+			setSalaryDirty(false);
 		}
 	};
 
@@ -32,6 +51,15 @@ const AddForm: React.FC = () => {
 		switch (e.target.name) {
 			case 'salary':
 				setSalary(e.target.value);
+				if (e.target.value.length < 4 || e.target.value.length > 10) {
+					setSalaryError('Оклад должнем быть min=4, max=10 символов');
+					//setSalaryDirty(true);s
+					if (!e.target.value) {
+						setSalaryError('Поле является обязательным');
+					}
+				} else {
+					setSalaryError('');
+				}
 				break;
 
 			case 'weekends':
@@ -65,8 +93,12 @@ const AddForm: React.FC = () => {
 				className={styles.addForm__input}
 				value={salary}
 				onChange={(e) => onValueChange(e)}
+				onBlur={() => blurHandler()}
 			/>
 			<span>руб.</span> <br />
+			{salaryDirty && salaryError && (
+				<div style={{ color: 'red', fontSize: '1rem', marginBottom: '5px' }}>{salaryError}</div>
+			)}
 			<label htmlFor="wentOutWeekend" className={styles.addForm__label}>
 				Выходили на выходных?
 			</label>
@@ -151,7 +183,7 @@ const AddForm: React.FC = () => {
 					<span>%</span> <br />
 				</>
 			)}
-			<button className={styles.addForm__btn} onClick={() => handleAction()}>
+			<button disabled={!formValid} className={styles.addForm__btn} onClick={() => handleAction()}>
 				Посчитать
 			</button>
 		</div>

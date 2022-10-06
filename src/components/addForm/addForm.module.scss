@@ -71,8 +71,8 @@
 			transform: scale(1.05);
 		}
 		&:disabled {
-			background-color: $btn-disable-color;
-			color: $btn-disable-text-color;
+			background-color: $btn-disable-text-color;
+			color: $main-text-color;
 			cursor: default;
 			&:active {
 				transform: none;
